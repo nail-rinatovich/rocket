@@ -16,7 +16,52 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.http import HttpResponse
+
+def home(request):
+    """Простая главная страница"""
+    return HttpResponse("""
+    <html>
+        <head>
+            <title>Django Project</title>
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    max-width: 800px;
+                    margin: 50px auto;
+                    padding: 20px;
+                    background-color: #f5f5f5;
+                }
+                .container {
+                    background-color: white;
+                    padding: 30px;
+                    border-radius: 8px;
+                    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                }
+                h1 {
+                    color: #333;
+                }
+                a {
+                    color: #007bff;
+                    text-decoration: none;
+                    font-weight: bold;
+                }
+                a:hover {
+                    text-decoration: underline;
+                }
+            </style>
+        </head>
+        <body>
+            <div class="container">
+                <h1>🎉 Добро пожаловать на Django проект!</h1>
+                <p>Проект успешно развернут на Render.com</p>
+                <p><a href="/admin/">Перейти в админ-панель</a></p>
+            </div>
+        </body>
+    </html>
+    """)
 
 urlpatterns = [
+    path("", home, name="home"),
     path("admin/", admin.site.urls),
 ]
