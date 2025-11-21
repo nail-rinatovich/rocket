@@ -14,6 +14,10 @@ services:
         value: False
       - key: ALLOWED_HOSTS
         value: django-project.onrender.com
+      - key: POETRY_VIRTUALENVS_CREATE
+        value: "false"
+      - key: POETRY_VIRTUALENVS_IN_PROJECT
+        value: "false"
     # Раскомментируйте и настройте, если нужна база данных PostgreSQL
     # database:
     #   name: django_project_db
