@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: django-project
+    runtime: python
+    plan: free
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn django_project.wsgi:application --bind 0.0.0.0:$PORT"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: False
+      - key: ALLOWED_HOSTS
+        value: django-project.onrender.com
+    # Раскомментируйте и настройте, если нужна база данных PostgreSQL
+    # database:
+    #   name: django_project_db
+    #   plan: free
+    #   databaseName: django_project
+    #   user: django_user
+
